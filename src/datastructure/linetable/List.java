@@ -30,7 +30,7 @@ public interface List {
 	public Object remove(int i);
 	
 	//删除线性表中第一个与e相同的元素
-	public boolean remove(Object e);
+	public boolean removeObject(Object e);
 	
 	//替换线性表中序号为i的数据元素为e,返回原数据元素
 	public Object replace(int i, Object e);

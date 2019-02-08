@@ -18,7 +18,9 @@ public class TestArrayList {
 		System.out.println(list);
 //		System.out.println(list.contains(344));
 //		System.out.println(list.indexOf(345));
-		System.out.println(list.replace(2, 777));
+//		System.out.println(list.replace(2, 777));
+//		System.out.println(list.remove(333));
+		System.out.println(list.removeObject(334));
 		System.out.println(list);
 	}
 }	

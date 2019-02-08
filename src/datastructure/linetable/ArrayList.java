@@ -137,14 +137,28 @@ public class ArrayList implements List{
 
 	@Override
 	public Object remove(int i) {
-		// TODO Auto-generated method stub
+		//判断i是否正确
+		if(i<0 || i>=size) {
+			throw new MyArrayIndexOutOfBoundsException("数组索引越界异常：" + i);
+		}
+		for(int j=i; j<size; j++) {
+			elementData[j] = elementData[j+1];
+		}
+		size--;
 		return null;
 	}
 
 	@Override
-	public boolean remove(Object e) {
-		// TODO Auto-generated method stubdd
-		return false;
+	public boolean removeObject(Object e) {
+		boolean flag = false;
+		for(int i=0; i<size; i++) {
+			if(elementData[i].equals(e)) {
+				this.remove(i);
+				flag = true;
+				break;
+			}
+		}
+		return flag;
 	}
 
 	@Override
