@@ -19,7 +19,7 @@ public class TestSingleLinkedList {
 		System.out.println(list);
 //		System.out.println(list.contains(334));
 //		System.out.println(list.indexOf(888));
-		System.out.println(list.replace(6, 777));
+		System.out.println(list.replace(3, 777));
 //		System.out.println(list.remove(5));
 //		System.out.println(list.removeObject(345));
 		System.out.println(list);
