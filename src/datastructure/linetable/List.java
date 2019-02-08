@@ -26,12 +26,6 @@ public interface List {
 	//将数据元素e插入到线性表末尾
 	public void add(Object e);
 	
-	//将数据元素e插入到元素obj之前
-	public void addBefore(Object obj, Object e);
-	
-	//将数据元素e插入到元素obj之后
-	public void addAfter(Object obj, Object e);
-
 	//删除线性表中序号为i的元素，并返回之
 	public Object remove(int i);
 	

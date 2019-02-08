@@ -11,10 +11,14 @@ public class TestArrayList {
 		list.add(334);
 		list.add(345);
 		
-		list.add(20, 888);
+		list.add(2, 888);
 		
-		System.out.println(list.size());
+//		System.out.println(list.size());
 //		System.out.println(list.isEmpty());
+		System.out.println(list);
+//		System.out.println(list.contains(344));
+//		System.out.println(list.indexOf(345));
+		System.out.println(list.replace(2, 777));
 		System.out.println(list);
 	}
 }	

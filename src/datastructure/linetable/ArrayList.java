@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 //import java.util.ArrayList
 /**
- *  顺序表
+ *  顺序表实现
  *  底层采用的数组，但是长度可以动态变化
  * 
  * java.util.ArrayList 每次增长50%
@@ -60,14 +60,28 @@ public class ArrayList implements List{
 
 	@Override
 	public boolean contains(Object e) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		for(int i=0; i<size; i++) {
+			//java中比较数字用equals
+			if(elementData[i].equals(e)) {
+				flag = true;
+				break;
+			}
+		}
+		return flag;
 	}
 
 	@Override
 	public int indexOf(Object e) {
-		// TODO Auto-generated method stub
-		return 0;
+		int flag = -1;
+		for(int i=0; i<size; i++) {
+			//java中比较数字用equals
+			if(elementData[i].equals(e)) {
+				flag = i;
+				break;
+			}
+		}
+		return flag;
 	}
 
 	@Override
@@ -122,18 +136,6 @@ public class ArrayList implements List{
 	}
 
 	@Override
-	public void addBefore(Object obj, Object e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addAfter(Object obj, Object e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public Object remove(int i) {
 		// TODO Auto-generated method stub
 		return null;
@@ -141,14 +143,19 @@ public class ArrayList implements List{
 
 	@Override
 	public boolean remove(Object e) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubdd
 		return false;
 	}
 
 	@Override
 	public Object replace(int i, Object e) {
-		// TODO Auto-generated method stub
-		return null;
+		//判断i是否正确
+		if(i<0 || i>=size) {
+			throw new MyArrayIndexOutOfBoundsException("数组索引越界异常：" + i);
+		}
+		Object oldData = elementData[i];
+		elementData[i] = e;
+		return oldData;
 	}
 	
 	//[123,345,678....]
