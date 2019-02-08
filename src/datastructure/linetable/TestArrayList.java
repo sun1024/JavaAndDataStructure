@@ -9,10 +9,12 @@ public class TestArrayList {
 		list.add(133);
 		list.add(323);
 		list.add(334);
-//		list.add(345);
+		list.add(345);
 		
-//		System.out.println(list.size());
+		list.add(20, 888);
+		
+		System.out.println(list.size());
 //		System.out.println(list.isEmpty());
-		System.out.println(list.get(9));
+		System.out.println(list);
 	}
 }	

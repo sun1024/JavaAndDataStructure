@@ -1,8 +1,13 @@
 package datastructure.linetable;
+
+import java.util.Arrays;
+
 //import java.util.ArrayList
 /**
- * 顺序表
- * 底层采用的数组，但是长度可以动态变化
+ *  顺序表
+ *  底层采用的数组，但是长度可以动态变化
+ * 
+ * java.util.ArrayList 每次增长50%
  * @author b1ng0
  *
  */
@@ -67,17 +72,53 @@ public class ArrayList implements List{
 
 	@Override
 	public void add(int i, Object e) {
-		// TODO Auto-generated method stub
+		//判断i是否正确
+		if(i<0 || i>size) {
+			throw new MyArrayIndexOutOfBoundsException("数组索引越界异常：" + i);
+		}
+		
+		//如果数组满了，就扩容
+		if(size == elementData.length) {
+			grow();
+		}
+		//后移i后面的元素，从最后一个元素开始
+		for(int j=size; j>i; j--) {
+			elementData[j] = elementData[j-1];
+		}
+		
+		//向索引i的位置插入元素e
+		elementData[i] = e;
+		//数组长度加一
+		size++; 
 		
 	}
 
 	@Override
 	public void add(Object e) {
-		//向数组末尾插入元素e
-		elementData[size] = e;
-		//数组长度加一
-		size++; 	
-//		elementDate[size++] = e;
+		
+		this.add(size, e);
+//		//如果数组满了，就扩容
+//		if(size == elementData.length) {
+//			grow();
+//		}
+//		//向数组末尾插入元素e
+//		elementData[size] = e;
+//		//数组长度加一
+//		size++; 	
+////		elementDate[size++] = e;
+	}
+	
+	//增长一倍
+	private void grow() {
+//		//创建一个新数组，长度是旧数组的2倍
+//		Object[] newArr = new Object[elementData.length*2];
+//		//将旧数组的数据拷贝给新数组
+//		for(int i=0; i < size; i++) {
+//			newArr[i] = elementData[i];
+//		}
+//		//将elementData指向新数组
+//		elementData = newArr;
+		elementData = Arrays.copyOf(elementData, elementData.length*2);
 	}
 
 	@Override
@@ -108,6 +149,24 @@ public class ArrayList implements List{
 	public Object replace(int i, Object e) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//[123,345,678....]
+	@Override
+	public String toString() {
+		if(size == 0) {
+			return "[]";
+		}
+		StringBuilder builder = new StringBuilder("[");
+		for(int i=0; i<size; i++) {
+			if(i != size-1) {
+			builder.append(elementData[i] + ", ");
+			} else {
+				builder.append(elementData[i]);
+			}
+		}
+		builder.append("]");
+		return builder.toString();
 	}
 
 }
