@@ -69,5 +69,5 @@ public interface BinaryTree {
 	/**
 	 * °´²ã´Î±éÀú
 	 */
-	public void levelOrderByStack();
+	public void levelOrderByQueue();
 }

@@ -29,14 +29,14 @@ public class Test {
 		//后序递归遍历 5 4 3 7 6 2 1
 		btree.postOrderTraverse();
 		
-		//中序非递归遍历(借助栈)
-		
+		//中序非递归遍历(借助栈) 4 5 1 3 2 6 7
+		btree.inOrderByStack();
 		
 		//按照层次遍历(借助队列)
-		
+		btree.levelOrderByQueue();
 		
 		//在二叉树中查找某个值
-		
+		System.out.println(btree.findKey(7));
 		
 		//二叉树的高度
 		System.out.println(btree.getHeight());

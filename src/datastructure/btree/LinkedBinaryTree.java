@@ -1,4 +1,9 @@
 package datastructure.btree;
+
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 链式二叉树实现
  * @author b1ng0
@@ -25,7 +30,7 @@ public class LinkedBinaryTree implements BinaryTree {
 
 	@Override
 	public int size() {
-		System.out.println("二叉树结点的个数:");
+		System.out.print("二叉树结点的个数:");
 		
 		return this.size(root);
 	}
@@ -45,7 +50,7 @@ public class LinkedBinaryTree implements BinaryTree {
 
 	@Override
 	public int getHeight() {
-		System.out.println("二叉树的高度:");
+		System.out.print("二叉树的高度:");
 		return this.getHeight(root);
 	}
 	
@@ -64,8 +69,26 @@ public class LinkedBinaryTree implements BinaryTree {
 
 	@Override
 	public Node findKey(int value) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.findkey(value, root);
+	}
+	
+	private Node findkey(Object value, Node root) {
+		if(root == null) {
+			return null;
+		} else if(root != null && root.value == value) {
+			return root;
+		} else {
+			Node nodeL = this.findkey(value, root.leftChild);
+			Node nodeR = this.findkey(value, root.rightChild);
+			if(nodeL != null && nodeL.value == value) {
+				return nodeL;
+			} else if(nodeR != null && nodeR.value == value){
+				return nodeR;
+			} else {
+				return null;
+			}
+		}
 	}
 	
 	@Override
@@ -130,8 +153,24 @@ public class LinkedBinaryTree implements BinaryTree {
 
 	@Override
 	public void inOrderByStack() {
-		// TODO Auto-generated method stub
 		
+		System.out.print("中序非递归遍历：");
+		//创建栈
+		Deque<Node> stack = new LinkedList<Node>();
+		Node current = root;
+		while(current != null || !stack.isEmpty()) {
+			while(current != null) {
+				stack.push(current);
+				current = current.leftChild;
+			}
+			
+			if(!stack.isEmpty()) {
+				current = stack.pop();
+				System.out.print(current.value + "  ");
+				current = current.rightChild;
+			}
+		}
+		System.out.println();
 	}
 
 	@Override
@@ -141,9 +180,21 @@ public class LinkedBinaryTree implements BinaryTree {
 	}
 
 	@Override
-	public void levelOrderByStack() {
-		// TODO Auto-generated method stub
-		
+	public void levelOrderByQueue() {
+		System.out.print("按照层次遍历二叉树：");
+		if(root == null) return;
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		while(queue.size() != 0) {
+			int len = queue.size();
+			for(int i=0; i<len; i++) {
+				Node temp = queue.poll();
+				System.out.print(temp.value+"  ");
+				if(temp.leftChild != null) queue.add(temp.leftChild);
+				if(temp.rightChild != null) queue.add(temp.rightChild);
+			}
+		}
+		System.out.println();
 	}
 
 }
