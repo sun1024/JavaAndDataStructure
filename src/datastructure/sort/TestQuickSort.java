@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 快速排序(不稳定)
  * 快排 = 冒泡 + 分治 + 递归
  * 时间复杂度 O(nlogn)
- * 空间复杂度O（logn）
+ * 空间复杂度O(logn)
  * @author b1ng0
  *
  */
