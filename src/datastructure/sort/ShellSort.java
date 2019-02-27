@@ -29,9 +29,9 @@ public class ShellSort {
 				int i=j;
 				//²åÈëÅÅĞò
 				while(i>=gap && arr[i-gap]>arr[i]) {
-					int temp = arr[i-gap] + arr[i];
-					arr[i-gap] = temp - arr[i-gap];
-					arr[i] = temp - arr[i-gap];
+					int temp = arr[i-gap];
+					arr[i-gap] = arr[i];
+					arr[i] = temp;
 					i -= gap;
 				}
 			}
